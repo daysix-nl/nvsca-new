@@ -18,8 +18,8 @@ else: ?>
             </div>
        
         </div>
-        <div class="hidden md:block lg:hidden">
-            <img src="<?php echo get_field('afbeelding');?>" alt="" class="aspect-video w-full">
+        <div class="aspect-video w-full hidden md:block lg:hidden">
+            <img src="<?php echo get_field('afbeelding');?>" alt="" class="h-full min-h-full min-w-full object-cover object-center">
         </div>
     </section>
 

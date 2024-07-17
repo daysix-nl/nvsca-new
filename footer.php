@@ -54,7 +54,12 @@
                     <p class="text-13 leading-30 md:text-13 md:leading-30 lg:text-10 lg:leading-23 xl:text-13 xl:leading-30 font-nunito text-black lg:pt-2 xl:pt-[25px] hidden lg:block">© <?php echo date("Y"); ?> Nederlandse Vereniging voor Schisis en Craniofaciale Afwijkingen</p>                
                 </div>
                 <div class="col-span-1 flex flex-col lg:ml-1 xl:ml-[15px]">
-                    <div class="grid grid-cols-2 justify-items-start">
+                    <div class="grid grid-cols-1 justify-items-start">
+                        <div class="text-13 leading-23 md:text-13 md:leading-23 lg:text-10 lg:leading-20 xl:text-13 xl:leading-23 font-nunito text-black">
+                            <b>Adresgegevens</b><br>
+                            <?php echo get_field('adresgegevens', 'option');?>
+
+                        </div>
                       <div class="grid grid-cols-5 w-[268px] md:w-[268px] lg:w-[239px] xl:w-[268px]  pt-[55px] md:pt-4 lg:pt-3 xl:pt-3">
                             <!-- SOCIAL MEDIA -->
                             <?php if (get_field('facebook', 'option')): ?><a href="<?php echo get_field('facebook', 'option');?>" target="_blank" class="col-span-1 max-w-[44px] md:max-w-[44px] lg:max-w-[39px] xl:max-w-[44px] hover:opacity-[0.7] duration-300"><?php include get_template_directory() . '/img/icons/facebook.php'; ?></a><?php endif; ?>
