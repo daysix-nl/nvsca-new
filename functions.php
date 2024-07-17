@@ -476,17 +476,17 @@ add_filter('get_terms', 'hide_uncategorized_category', 10, 2);
 |
 */
 
-// function remove_gutenberg_container_img_css() {
-//     // Voeg hier de naam van het CSS-bestand van Gutenberg toe waarin de class .block-editor__container img wordt gedefinieerd.
-//     $gutenberg_css_handle = 'wp-block-library';
+function remove_gutenberg_container_img_css() {
+    // Voeg hier de naam van het CSS-bestand van Gutenberg toe waarin de class .block-editor__container img wordt gedefinieerd.
+    $gutenberg_css_handle = 'wp-block-library';
 
-//     // Verwijder het Gutenberg CSS-bestand.
-//     wp_dequeue_style( $gutenberg_css_handle );
-//     wp_deregister_style( $gutenberg_css_handle );
-// }
-// add_action( 'wp_enqueue_scripts', 'remove_gutenberg_container_img_css', 100 );
-// add_action( 'admin_enqueue_scripts', 'remove_gutenberg_container_img_css', 100 );
-// add_action( 'enqueue_block_editor_assets', 'remove_gutenberg_container_img_css', 100 );
+    // Verwijder het Gutenberg CSS-bestand.
+    wp_dequeue_style( $gutenberg_css_handle );
+    wp_deregister_style( $gutenberg_css_handle );
+}
+add_action( 'wp_enqueue_scripts', 'remove_gutenberg_container_img_css', 100 );
+add_action( 'admin_enqueue_scripts', 'remove_gutenberg_container_img_css', 100 );
+add_action( 'enqueue_block_editor_assets', 'remove_gutenberg_container_img_css', 100 );
 
 
 
