@@ -1,0 +1,27 @@
+{
+  "name": "acf-nieuws-uitgelicht",
+  "title": "Nieuws uitgelicht",
+  "description": "Een blok dat automatisch alle nieuwsberichten toont.",
+  "category": "bibliotheek",
+  "icon": "schedule",
+  "keywords": [
+    "block"
+  ],
+  "supports": {
+    "mode": false,
+    "jsx": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "acf-nieuws-uitgelicht.php"
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "preview_image_help": "/wp-content/themes/nvsca-new/img/preview-images/nieuws-overzicht.jpeg",
+        "is_preview": true
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+    "key": "group_64d12d68d5e6a",
+    "title": "Content blok 3",
+    "fields": [
+        {
+            "key": "field_64d12d692df9c",
+            "label": "Titel",
+            "name": "titel",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Lorem ipsum",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": "br"
+        },
+        {
+            "key": "field_64d12dc7bb0fd",
+            "label": "Tekst",
+            "name": "tekst",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nOver inspelen op pieken en dalen door middel van huur en depotbeheer. Over investeren in hulpmiddelen op het juiste moment. En vooral over 24\/7 informatie waar u echt wat aan heeft. Van u wordt namelijk verwacht dat u “in control” bent. En dat is in deze snel veranderende wereld lastig genoeg.",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_64d12f7cb2b15",
+            "label": "ID YouTube video",
+            "name": "id_youtube",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<b>Uitleg:<\/b> Ga naar www.youtube.com en ga naar de desbetreffende video. Klik vervolgens op de <u>Delen<\/u> button. Je krijgt dan een URL te zien van YouTube met daarachter een unieke code van de video. Voorbeeld: <em>https:\/\/youtube.com\/<b>10PzKOd8aZs<\/b><\/em>. Kopieer deze code en plaats hem in dit veld.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6543d688e18cc",
+            "label": "Uitlijning video",
+            "name": "order",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "order-1": "Links",
+                "order-3": "Rechts"
+            },
+            "default_value": "order-3",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/acf-content-blok-3"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1718196011
+}
