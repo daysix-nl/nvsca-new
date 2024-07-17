@@ -50,7 +50,7 @@
             <div class="border-t-[1px] border-[#C6C6C6] opacity-[0.42] xl:mx-[15px]"></div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-[45px] lg:gap-5 xl:gap-6 xl:mx-[15px] pt-[37px] pb-[30px] md:pt-3 md:pb-[55px] lg:pt-3 lg:pb-[55px] xl:pt-[35px] xl:pb-[55px]">
                 <div class="col-span-1 lg:col-span-2 flex flex-col">
-                    <a href="/" class="w-[242px] md:w-[242px] lg:w-[166px] xl:w-[187px]"><img src="/wp-content/themes/nvsca-new/img/local/logo_v3.png" alt=""></a>
+                    <a href="/" class="w-[242px] md:w-[242px] lg:w-[166px] xl:w-[187px]"><img src="/wp-content/themes/nvsca-new/img/local/Logo_v3.png" alt=""></a>
                     <p class="text-13 leading-30 md:text-13 md:leading-30 lg:text-10 lg:leading-23 xl:text-13 xl:leading-30 font-nunito text-black lg:pt-2 xl:pt-[25px] hidden lg:block">© <?php echo date("Y"); ?> Nederlandse Vereniging voor Schisis en Craniofaciale Afwijkingen</p>                
                 </div>
                 <div class="col-span-1 flex flex-col lg:ml-1 xl:ml-[15px]">
