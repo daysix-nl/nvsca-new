@@ -379,17 +379,17 @@ function acf_icon_url( $path_suffix ) {
 // add_filter('upload_mimes', 'cc_mime_types');
 
 
-// function my_custom_js() {
-//     ?>
-//       <script>
-//         document.addEventListener( 'gform_confirmation_loaded', function( event ) {
-//           if ( event.detail.formId === '1' ) {
-//             document.getElementById( 'contact-modal' ).style.display = 'block';
-//           }
-//         }, false );
-//       </script>
-//     <?php
-//     }
+function my_custom_js() {
+    ?>
+      <script>
+        document.addEventListener( 'gform_confirmation_loaded', function( event ) {
+          if ( event.detail.formId === '1' ) {
+            document.getElementById( 'contact-modal' ).style.display = 'block';
+          }
+        }, false );
+      </script>
+    <?php
+    }
 
 
 
