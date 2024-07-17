@@ -701,6 +701,9 @@ video {
 .ml-4 {
   margin-left: 40px;
 }
+.ml-\[10px\] {
+  margin-left: 10px;
+}
 .ml-\[20px\] {
   margin-left: 20px;
 }
