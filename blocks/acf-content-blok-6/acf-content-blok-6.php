@@ -9,8 +9,8 @@ else: ?>
 
         <section class="bg-white <?php echo get_field('padding_top');?> <?php echo get_field('padding_bottom');?>">
         <div class="container grid grid-cols-1 lg:grid-cols-2 items-center">
-            <div class="col-span-1 block md:hidden lg:block pt-5 md:pt-0">
-                <img src="<?php echo get_field('afbeelding');?>" alt="" class="aspect-video w-full">
+            <div class="aspect-video w-full col-span-1 block md:hidden lg:block pt-5 md:pt-0">
+                <img src="<?php echo get_field('afbeelding');?>" alt="" class="h-full min-h-full min-w-full object-cover object-center">
             </div>
             <div class="col-span-1 grid gap-[25px] md:gap-3 lg:gap-4 lg:pl-2 justify-end">
                 <h2 class="text-22 leading-33 md:text-21 md:leading-28 lg:text-22 lg:leading-29 xl:text-25 xl:leading-33 font-satoshi text-<?php echo get_field('titel_kleur');?> font-semibold lg:max-w-[439px] xl:max-w-[527px]"><?php echo get_field('titel');?></h2>
