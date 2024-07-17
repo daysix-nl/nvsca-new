@@ -89,7 +89,7 @@ $version_number = '1.3';
   </div>
   <div class="bg-white h-[82px] md:h-[71px] lg:h-[68px] border-b-[1px] border-[#EBEBEB]">
     <div class="flex items-center justify-between h-full mr-2 md:mr-[25px] lg:mr-[15px] xl:mr-2">
-      <a href="/" class="ml-2 md:ml-4 w-[231px]"><img src="/wp-content/themes/nvsca-new/img/local/logo_v3.png" alt=""></a>
+      <a href="/" class="ml-2 md:ml-4 w-[231px]"><img src="/wp-content/themes/nvsca-new/img/local/Logo_v3.png" alt=""></a>
       <div class="overflow-hidden flex h-[82px] md:h-[71px] lg:h-[68px] items-center relative">
         <!-- DESKTOP MENU -->
         <div class="hidden lg:flex">
