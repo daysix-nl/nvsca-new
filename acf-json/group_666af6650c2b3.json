@@ -50,6 +50,13 @@
                 "operator": "==",
                 "value": "acf\/acf-formulier"
             }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/acf-registratie"
+            }
         ]
     ],
     "menu_order": 0,
@@ -61,5 +68,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718286020
+    "modified": 1724165619
 }

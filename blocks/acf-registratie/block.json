@@ -1,0 +1,27 @@
+{
+  "name": "acf-registratie",
+  "title": "Registratie",
+  "description": "",
+  "category": "bibliotheek",
+  "icon": "forms",
+  "keywords": [
+    "block"
+  ],
+  "supports": {
+    "mode": false,
+    "jsx": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "acf-registratie.php"
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "preview_image_help": "/wp-content/themes/nvsca-new/img/preview-images/leeg.jpeg",
+        "is_preview": true
+      }
+    }
+  }
+}
