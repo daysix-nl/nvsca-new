@@ -45,40 +45,11 @@ if ($loop->have_posts()) {
         <?php $geen_lid_prijs = get_field('prijs_geen_lid'); ?>
         
 
-        <?php if (have_rows('extra_rollen')) : ?>
-            <h2>Extra Rollen</h2>
-            <ul class="extra-roll">
-            <?php while (have_rows('extra_rollen')) : the_row(); ?>
-                <li>
-                    <label>
-                        <input type="checkbox" class="extra-checkbox" data-price="<?php echo esc_attr(get_sub_field('prijs')); ?>">
-                        <?php echo esc_html(get_sub_field('title')); ?> - &euro;<?php echo esc_html(get_sub_field('prijs')); ?>
-                    </label>
-                    <p><?php echo esc_html(get_sub_field('omschrijving')); ?></p>
-                </li>
-            <?php endwhile; ?>
-            </ul>
-        <?php endif; ?>
-
-
-        <?php if (have_rows('extra_toevoegingen')) : ?>
-            <h2>Extra Toevoegingen</h2>
-            <ul class="extra-additions">
-            <?php while (have_rows('extra_toevoegingen')) : the_row(); ?>
-                <li>
-                    <label>
-                        <input type="checkbox" class="extra-checkbox" data-price="<?php echo esc_attr(get_sub_field('prijs')); ?>">
-                        <?php echo esc_html(get_sub_field('title')); ?> - &euro;<?php echo esc_html(get_sub_field('prijs')); ?>
-                    </label>
-                    <p><?php echo esc_html(get_sub_field('omschrijving')); ?></p>
-                </li>
-            <?php endwhile; ?>
-            </ul>
-        <?php endif; ?>
-
 
         <form id="event-form" class="flex flex-col" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
             <input type="hidden" name="action" value="submit_event_order">
+            <input type="hidden" name="event_id" value="<?php echo esc_attr($current_post_id); ?>">
+            <input type="hidden" name="amount_paid" id="hidden-total-price" value="0">
             <label for="name">Naam</label>
             <input type="text" id="name" name="name" required>
 
@@ -91,8 +62,8 @@ if ($loop->have_posts()) {
             <input type="email" id="email" name="email" required>
 
 
-            <label for="phone">Telefoonnummer</label>
-            <input type="tel" id="phone" name="phone" required>
+            <label for="phonenumber">Telefoonnummer</label>
+            <input type="tel" id="phonenumber" name="phonenumber" required>
 
  
             <label for="age">Leeftijd</label>
@@ -105,12 +76,12 @@ if ($loop->have_posts()) {
             <input type="text" id="city" name="city" required>
 
 
-            <label for="reason">Reden van Bezoek</label>
-            <textarea id="reason" name="reason" required></textarea>
+            <label for="description">Reden van Bezoek</label>
+            <textarea id="description" name="description" required></textarea>
 
 
             <label>
-                <input type="checkbox" id="terms" name="terms" required>
+                <input type="checkbox" id="term" name="term" required>
                 Ik ga akkoord met de voorwaarden
             </label>
 
@@ -119,6 +90,36 @@ if ($loop->have_posts()) {
                 <input type="checkbox" id="non_member" name="non_member" class="extra-checkbox" data-price="<?php echo esc_attr($geen_lid_prijs); ?>">
                 Inschrijven voor geen lid (&euro;<?php echo esc_html($geen_lid_prijs); ?>)
             </label>
+
+            <?php if (have_rows('extra_rollen')) : ?>
+                <h2>Extra Rollen</h2>
+                <ul class="extra-roll">
+                <?php while (have_rows('extra_rollen')) : the_row(); ?>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="extra-checkbox" data-price="<?php echo esc_attr(get_sub_field('prijs')); ?>" data-name="<?php echo esc_attr(get_sub_field('title')); ?>">
+                            <?php echo esc_html(get_sub_field('title')); ?> - &euro;<?php echo esc_html(get_sub_field('prijs')); ?>
+                        </label>
+                        <p><?php echo esc_html(get_sub_field('omschrijving')); ?></p>
+                    </li>
+                <?php endwhile; ?>
+                </ul>
+            <?php endif; ?>
+
+            <?php if (have_rows('extra_toevoegingen')) : ?>
+                <h2>Extra Toevoegingen</h2>
+                <ul class="extra-additions">
+                <?php while (have_rows('extra_toevoegingen')) : the_row(); ?>
+                    <li>
+                        <label>
+                            <input type="checkbox" name="additional_products[]" class="extra-checkbox" data-price="<?php echo esc_attr(get_sub_field('prijs')); ?>" data-name="<?php echo esc_attr(get_sub_field('title')); ?>">
+                            <?php echo esc_html(get_sub_field('title')); ?> - &euro;<?php echo esc_html(get_sub_field('prijs')); ?>
+                        </label>
+                        <p><?php echo esc_html(get_sub_field('omschrijving')); ?></p>
+                    </li>
+                <?php endwhile; ?>
+                </ul>
+            <?php endif; ?>
 
    
             <div>
@@ -169,24 +170,53 @@ $max_participants = (int) get_field('max_aantal_deelnemers');
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const totalPriceElement = document.getElementById('total-price');
-        const hiddenTotalPrice = document.getElementById('hidden-total-price');
-        let totalPrice = 0;
+document.addEventListener('DOMContentLoaded', function () {
+    const checkboxes = document.querySelectorAll('.extra-checkbox');
+    const totalPriceElement = document.getElementById('total-price');
 
-        document.querySelectorAll('.extra-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                const price = parseFloat(this.getAttribute('data-price')) || 0;
-                if (this.checked) {
-                    totalPrice += price;
-                } else {
-                    totalPrice -= price;
-                }
-                totalPriceElement.textContent = totalPrice.toFixed(2);
-                hiddenTotalPrice.value = totalPrice.toFixed(2);
-            });
+    function updateTotalPrice() {
+        let totalPrice = 0;
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                totalPrice += parseFloat(checkbox.getAttribute('data-price'));
+            }
         });
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+    function getSelectedProductNames() {
+        const selectedProducts = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedProducts.push(checkbox.getAttribute('data-name'));
+            }
+        });
+        return selectedProducts;
+    }
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateTotalPrice);
     });
+
+    updateTotalPrice(); // Initial calculation
+
+    // Assuming you have a form submission handler
+    document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const selectedProducts = getSelectedProductNames();
+        console.log('Selected Products:', selectedProducts);
+
+        // Add the selected products to a hidden input field or handle them as needed
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'selected_products';
+        hiddenInput.value = JSON.stringify(selectedProducts);
+        this.appendChild(hiddenInput);
+
+        // Submit the form
+        this.submit();
+    });
+});
 </script>
 
 <?php get_footer(); ?>
