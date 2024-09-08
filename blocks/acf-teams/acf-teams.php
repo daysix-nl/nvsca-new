@@ -8,7 +8,6 @@ else: ?>
            <div class="bg-black w-full h-[600px] flex justify-center items-center">
                 <p class="text-white text-center px-[20px]">[HIER KOMT EEN TEAMSECTIE VANUIT HET DASHBOARD]</p>
            </div>
-            
         </div>
     </section>
 <?php endif; ?>
