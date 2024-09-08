@@ -77,8 +77,8 @@ if ($loop->have_posts()) {
         <?php endif; ?>
 
 
-        <form id="event-form" class="flex flex-col">
-
+        <form id="event-form" class="flex flex-col" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
+            <input type="hidden" name="action" value="submit_event_order">
             <label for="name">Naam</label>
             <input type="text" id="name" name="name" required>
 
@@ -165,18 +165,15 @@ $max_participants = (int) get_field('max_aantal_deelnemers');
 
         </form>
 
-        <div id="response-message"></div>
     </div>
 </section>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('event-form');
         const totalPriceElement = document.getElementById('total-price');
-        const responseMessage = document.getElementById('response-message');
+        const hiddenTotalPrice = document.getElementById('hidden-total-price');
         let totalPrice = 0;
 
-        // Update total price based on selected checkboxes
         document.querySelectorAll('.extra-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 const price = parseFloat(this.getAttribute('data-price')) || 0;
@@ -186,46 +183,7 @@ $max_participants = (int) get_field('max_aantal_deelnemers');
                     totalPrice -= price;
                 }
                 totalPriceElement.textContent = totalPrice.toFixed(2);
-            });
-        });
-
-        // Handle form submission
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(form);
-            const data = {
-                name: formData.get('name'),
-                surname: formData.get('surname'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                age: formData.get('age'),
-                address: formData.get('address'),
-                city: formData.get('city'),
-                reason: formData.get('reason'),
-                terms: formData.get('terms') === 'on' ? true : false,
-                non_member: formData.get('non_member') === 'on' ? true : false,
-                total_price: totalPrice
-            };
-
-            // Send data to Mollie endpoint
-            fetch('/wp-json/custom-endpoint/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-            .then(response => response.json())
-            .then(result => {
-                // Display success or error message
-                responseMessage.innerHTML = `<p>${result.message}</p>`;
-                if (result.payment_url) {
-                    window.location.href = result.payment_url; // Redirect to Mollie payment URL
-                }
-            })
-            .catch(error => {
-                responseMessage.innerHTML = `<p>Er is een fout opgetreden: ${error.message}</p>`;
+                hiddenTotalPrice.value = totalPrice.toFixed(2);
             });
         });
     });
