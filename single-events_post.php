@@ -112,7 +112,7 @@ if ($loop->have_posts()) {
                 <?php while (have_rows('extra_toevoegingen')) : the_row(); ?>
                     <li>
                         <label>
-                            <input type="checkbox" name="additional_products[]" class="extra-checkbox" data-price="<?php echo esc_attr(get_sub_field('prijs')); ?>" data-name="<?php echo esc_attr(get_sub_field('title')); ?>">
+                            <input type="checkbox" name="additional_products[]" class="extra-checkbox" value="<?php echo esc_attr(get_sub_field('title')); ?>" data-price="<?php echo esc_attr(get_sub_field('prijs')); ?>">
                             <?php echo esc_html(get_sub_field('title')); ?> - &euro;<?php echo esc_html(get_sub_field('prijs')); ?>
                         </label>
                         <p><?php echo esc_html(get_sub_field('omschrijving')); ?></p>
