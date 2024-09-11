@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalPrice += parseFloat(checkbox.getAttribute('data-price'));
             }
         });
-        totalPriceField.value = totalPrice.toFixed(2);
+        totalPriceElement.value = totalPrice.toFixed(2);
     }
 
 
