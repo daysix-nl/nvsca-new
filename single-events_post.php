@@ -159,6 +159,7 @@ $max_participants = (int) get_field('max_aantal_deelnemers');
 document.addEventListener('DOMContentLoaded', function () {
     const checkboxes = document.querySelectorAll('.extra-checkbox');
     const totalPriceElement = document.getElementById('total-price');
+    const hiddenTotalPriceElement = document.getElementById('hidden-total-price');
 
     function updateTotalPrice() {
         let totalPrice = 0;
@@ -168,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         totalPriceElement.textContent = totalPrice.toFixed(2);
-         totalPriceElement.value = totalPrice.toFixed(2);
+        hiddenTotalPriceElement.value = totalPrice.toFixed(2);
     }
 
     function getSelectedProductNames() {
