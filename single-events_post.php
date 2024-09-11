@@ -49,7 +49,7 @@ if ($loop->have_posts()) {
         <form id="event-form" class="flex flex-col" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
             <input type="hidden" name="action" value="submit_event_order">
             <input type="hidden" name="event_id" value="<?php echo esc_attr($current_post_id); ?>">
-            <input type="hidden" name="amount_paid" id="hidden-total-price" value="0">
+            <input type="hidden" name="amount_paid" id="hidden-total-price">
             <label for="name">Naam</label>
             <input type="text" id="name" name="name" required>
 
@@ -181,8 +181,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalPrice += parseFloat(checkbox.getAttribute('data-price'));
             }
         });
-        totalPriceElement.textContent = totalPrice.toFixed(2);
+        totalPriceField.value = totalPrice.toFixed(2);
     }
+
 
     function getSelectedProductNames() {
         const selectedProducts = [];
