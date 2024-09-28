@@ -6,7 +6,7 @@ else: ?>
     <section class="bg-white py-[60px]">
         <div class="container">
            <div class="bg-black w-full h-[600px] flex justify-center items-center">
-                <p class="text-white text-center px-[20px]">[HIER KOMT EEN TEAMSECTIE VANUIT HET DASHBOARD]</p>
+                <iframe src="https://dashboard.schisis-cranio.nl/teamlocator"></iframe>
            </div>
         </div>
     </section>
